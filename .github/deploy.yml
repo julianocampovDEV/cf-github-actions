@@ -1,3 +1,4 @@
+######################################################################################
 # EJEMLO 1
 # name: "Deploy"
 
@@ -19,6 +20,7 @@
 #           python-version: "3.12"
 #       - run: python src/main.py
 
+######################################################################################
 # # EJEMPLO 2
 # name: Deploy to server # Nombre
 
@@ -53,6 +55,7 @@
 #       - name: Action
 #         uses: actions/checkout@v4
 
+######################################################################################
 # # EJEMPLO 3
 # name: Deploy to server # Nombre
 
@@ -92,6 +95,7 @@
 #       - name: Imprimir variable
 #         run: echo "$variable"
 
+######################################################################################
 # EJEMPLO 4
 name: Artefactos
 

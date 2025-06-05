@@ -1,0 +1,19 @@
+######################################################################################
+# EJEMPLO 5
+# Ejecutar un script en diferentes SO o versiones
+name: Artefactos
+
+on: push
+
+jobs:
+  first_job:
+    name: Primer trabajo
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        message: ["Hola", "Codigo Facilito"]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Mostrar informacións
+        run: echo "${{ matrix.message }} - ${{ matrix.os }}"
