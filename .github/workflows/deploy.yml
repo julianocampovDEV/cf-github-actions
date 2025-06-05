@@ -31,3 +31,10 @@ jobs:
     steps:
       - name: Hola mundo
         run: echo "🚨 Hola mundo"
+
+  second-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hola mundo
+        run: echo "🚨 Hola mundo segundo job"
