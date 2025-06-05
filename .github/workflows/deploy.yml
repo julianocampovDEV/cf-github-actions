@@ -25,15 +25,21 @@ name: Deploy to server # Nombre
 on: push # Evento
 
 jobs:
-  first-job:
+  first_job:
     runs-on: ubuntu-latest
 
     steps:
       - name: Hola mundo
         run: echo "🚨 Hola mundo"
 
-  second-job:
-    needs: first-job
+  second_job:
+    needs: first_job
+
+    # Se puede con listas
+    # needs:
+    #   - first-job
+    #   - other-job
+
     runs-on: ubuntu-latest
 
     steps:
