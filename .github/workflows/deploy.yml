@@ -53,10 +53,49 @@
 #       - name: Action
 #         uses: actions/checkout@v4
 
-# EJEMPLO 3
-name: Deploy to server # Nombre
+# # EJEMPLO 3
+# name: Deploy to server # Nombre
 
-on: push # Evento
+# on: push # Evento
+
+# jobs:
+#   first_job:
+#     name: Primer trabajo
+#     runs-on: ubuntu-latest
+#     outputs:
+#       variable: ${{ steps.step_share.outputs.variable }}
+
+#     steps:
+#       - name: List environment variables
+#         run: echo $GITHUB_OUTPUT
+
+#       - name: Share information
+#         id: step_share
+#         run: echo "variable=Hola Mundo" >> $GITHUB_OUTPUT
+
+#       - name: Get message
+#         run: echo ${{ steps.step_share.outputs.variable }}
+
+#   second_job:
+#     name: Segundo trabajo
+#     runs-on: ubuntu-latest
+#     needs: first_job
+#     env:
+#       variable: ${{ needs.first_job.outputs.variable }}
+#     steps:
+#       - name: Ejecuntando segundo trabajo
+#         run: echo "🚨 Segundo step"
+
+#       - name: Imprimir variable con interpolación
+#         run: echo ${{ env.variable }}
+
+#       - name: Imprimir variable
+#         run: echo "$variable"
+
+# EJEMPLO 4
+name: Artefactos
+
+on: push
 
 jobs:
   first_job:
@@ -66,28 +105,12 @@ jobs:
       variable: ${{ steps.step_share.outputs.variable }}
 
     steps:
-      - name: List environment variables
-        run: echo $GITHUB_OUTPUT
+      - name: Generar archivo
+        run: |
+          echo "Archivo prueba, hola" >> test.log
 
-      - name: Share information
-        id: step_share
-        run: echo "variable=Hola Mundo" >> $GITHUB_OUTPUT
-
-      - name: Get message
-        run: echo ${{ steps.step_share.outputs.variable }}
-
-  second_job:
-    name: Segundo trabajo
-    runs-on: ubuntu-latest
-    needs: first_job
-    env:
-      variable: ${{ needs.first_job.outputs.variable }}
-    steps:
-      - name: Ejecuntando segundo trabajo
-        run: echo "🚨 Segundo step"
-
-      - name: Imprimir variable con interpolación
-        run: echo ${{ env.variable }}
-
-      - name: Imprimir variable
-        run: echo "$variable"
+      - name: Subir artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: archivo-test
+          path: test.log
