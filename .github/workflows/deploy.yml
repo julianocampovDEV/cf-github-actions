@@ -19,35 +19,55 @@
 #           python-version: "3.12"
 #       - run: python src/main.py
 
-# EJEMPLO 2
+# # EJEMPLO 2
+# name: Deploy to server # Nombre
+
+# on: push # Evento
+
+# jobs:
+#   first_job:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Hola mundo
+#         run: echo "🚨 Hola mundo"
+
+#   second_job:
+#     # if: false
+#     if: ${{ github.ref == 'refs/heads/main' }}
+#     needs: first_job
+
+#     # Se puede con listas
+#     # needs:
+#     #   - first-job
+#     #   - other-job
+
+#     runs-on: ubuntu-latest
+#     name: Segundo trabajo
+
+#     steps:
+#       - name: Working
+#         # shell: bash
+#         run: ls -al
+
+#       - name: Action
+#         uses: actions/checkout@v4
+
+# EJEMPLO 3
 name: Deploy to server # Nombre
 
 on: push # Evento
 
 jobs:
   first_job:
+    name: Primer trabajo
     runs-on: ubuntu-latest
-
     steps:
-      - name: Hola mundo
-        run: echo "🚨 Hola mundo"
+      - name: List environment variables
+        run: echo $GITHUB_OUTPUT
 
   second_job:
-    # if: false
-    if: ${{ github.ref == 'refs/heads/main' }}
-    needs: first_job
-
-    # Se puede con listas
-    # needs:
-    #   - first-job
-    #   - other-job
-
-    runs-on: ubuntu-latest
     name: Segundo trabajo
-
+    runs-on: ubuntu-latest
+    needs: first_job
     steps:
-      - name: Working dir
-        run: ls -al
-
-      - name: Action
-        uses: actions/checkout@v4
