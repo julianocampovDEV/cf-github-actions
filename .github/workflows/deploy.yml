@@ -86,5 +86,8 @@ jobs:
       - name: Ejecuntando segundo trabajo
         run: echo "🚨 Segundo step"
 
-      - name: Imprimir variable
+      - name: Imprimir variable con interpolación
         run: echo ${{ env.variable }}
+
+      - name: Imprimir variable
+        run: echo "$variable"
