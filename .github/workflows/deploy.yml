@@ -66,6 +66,13 @@ jobs:
       - name: List environment variables
         run: echo $GITHUB_OUTPUT
 
+      - name: Share information
+        id: step_share
+        run: echo "variable=Hola Mundo" >> $GITHUB_OUTPUT
+
+      - name: Get message
+        run: echo ${{ steps.step_share.outputs.variable }}
+
   second_job:
     name: Segundo trabajo
     runs-on: ubuntu-latest
