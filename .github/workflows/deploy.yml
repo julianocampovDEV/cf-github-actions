@@ -114,3 +114,17 @@ jobs:
         with:
           name: archivo-test
           path: test.log
+
+  second_job:
+    name: Segundo trabajo
+    runs-on: ubuntu-latest
+    needs: first_job
+
+    steps:
+      - name: Descargar artefacto
+        uses: actions/download-artifact@v4
+        with:
+          name: archivo-test
+
+      - name: Mostrar contenido
+        run: cat test.log
