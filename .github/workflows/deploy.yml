@@ -1,0 +1,33 @@
+# EJEMLO 1
+# name: "Deploy"
+
+# on:
+#   push:
+#     branches: ["main"]
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+#       - run: echo "🚨 Inicio de Workflow - Consola"
+
+#       - name: Setup Python
+#         uses: actions/setup-python@v5
+#         with:
+#           python-version: "3.12"
+#       - run: python src/main.py
+
+# EJEMPLO 2
+name: Deploy to server # Nombre
+
+on: push # Evento
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hola mundo
+        run: echo "🚨 Hola mundo"
