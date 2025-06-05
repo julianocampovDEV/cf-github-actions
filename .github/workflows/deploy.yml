@@ -43,7 +43,11 @@ jobs:
     #   - other-job
 
     runs-on: ubuntu-latest
+    name: Segundo trabajo
 
     steps:
-      - name: Hola mundo
-        run: echo "🚨 Hola mundo segundo job"
+      - name: Working dir
+        run: ls -al
+
+      - name: Action
+        uses: actions/checkout@v4
