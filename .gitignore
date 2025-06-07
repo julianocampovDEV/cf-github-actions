@@ -1,1 +1,4 @@
-deploy-git.sh
+*deploy-git.sh
+*node_modules
+*coverage
+*dist
