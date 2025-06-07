@@ -8,6 +8,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    # Contenedores que suministran servicios que se necesitan para el proyecto
+    # Contenedores de Docker
+    services:
+      redis:
+        image: redi
+        ports:
+          - 6379:6379
+
     steps:
+      - name: Install redis cli
+        run: apt-get update -y && apt-get install redis-tools -y
+
+      - name: Test redis
+        run: redis-cli -h localhost -p 6379 ping
+
       - name: Mostrar variable
         run: echo "${{ secrets.TOKEN_SECRET }}"
+
+      - name: Setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
