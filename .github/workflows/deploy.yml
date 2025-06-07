@@ -12,13 +12,13 @@ jobs:
     # Contenedores de Docker
     services:
       redis:
-        image: redi
+        image: redis
         ports:
           - 6379:6379
 
     steps:
       - name: Install redis cli
-        run: apt-get update -y && apt-get install redis-tools -y
+        run: sudo apt-get update -y && apt-get install redis-tools -y
 
       - name: Test redis
         run: redis-cli -h localhost -p 6379 ping
