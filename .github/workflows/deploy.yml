@@ -11,7 +11,7 @@ jobs:
     # Pararme en una carpeta de manera global
     defaults:
       run:
-        working-directory: ./02_Ejemplo
+        working-directory: 02_Ejemplo
 
     # Contenedores que suministran servicios que se necesitan para el proyecto
     # Contenedores de Docker
