@@ -22,33 +22,27 @@ jobs:
           - 6379:6379
 
     steps:
-      # - name: Install redis cli
-      #   run: sudo apt-get update -y && sudo apt-get install redis-tools -y
+      - name: Install redis cli
+        run: sudo apt-get update -y && sudo apt-get install redis-tools -y
 
-      # - name: Test redis
-      #   run: redis-cli -h localhost -p 6379 ping
+      - name: Test redis
+        run: redis-cli -h localhost -p 6379 ping
 
-      # - name: Mostrar variable
-      #   run: echo "${{ secrets.TOKEN_SECRET }}"
+      - name: Mostrar variable
+        run: echo "${{ secrets.TOKEN_SECRET }}"
 
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: ls
-        run: ls
+      - name: Setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
 
-      - name: pwd
-        run: pwd
+      - name: Instalar dependencias
+        run: npm install
+        # Pararme en una carpeta en un step en específico
+        working-directory: ./02_Ejemplo
 
-      # - name: Setup
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: "18"
-
-      # - name: Instalar dependencias
-      #   run: npm install
-      #   # Pararme en una carpeta en un step en específico
-      #   # working-directory: ./02_Ejemplo
-
-      # - name: Run test
-      #   run: npm run test
+      - name: Run test
+        run: npm run test
