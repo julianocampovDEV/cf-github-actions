@@ -78,4 +78,3 @@ jobs:
       - name: Desplegar sitio web
         id: deployment-pages
         uses: actions/deploy-pages@v4
-        working-directory: ./02_Ejemplo
