@@ -22,11 +22,6 @@ jobs:
           - 6379:6379
 
     steps:
-      - name: ls
-        run: ls
-
-      - name: pwd
-        run: pwd
       # - name: Install redis cli
       #   run: sudo apt-get update -y && sudo apt-get install redis-tools -y
 
@@ -36,8 +31,14 @@ jobs:
       # - name: Mostrar variable
       #   run: echo "${{ secrets.TOKEN_SECRET }}"
 
-      # - name: Checkout
-      #   uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: ls
+        run: ls
+
+      - name: pwd
+        run: pwd
 
       # - name: Setup
       #   uses: actions/setup-node@v4
