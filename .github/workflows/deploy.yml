@@ -53,7 +53,7 @@ jobs:
         working-directory: ./02_Ejemplo
 
       - name: Cargar artefacto (archivos generados en public)
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./02_Ejemplo/public/
 
