@@ -77,4 +77,4 @@ jobs:
 
       - name: Desplegar sitio web
         id: deployment-pages
-        ruses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4
