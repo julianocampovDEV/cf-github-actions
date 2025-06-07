@@ -55,8 +55,7 @@ jobs:
       - name: Cargar artefacto (archivos generados en public)
         uses: actions/upload-pages-artifact@v4
         with:
-          path: public/
-        working-directory: ./02_Ejemplo
+          path: ./02_Ejemplo/public/
 
   deploy:
     # Métodos para ejecutar según lo sucedido en el job dependiente
