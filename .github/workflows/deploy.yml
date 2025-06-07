@@ -1,0 +1,13 @@
+name: Deploy Web
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mostrar variable
+        run: echo "${{ secrets.TOKEN_SECRET }}"
