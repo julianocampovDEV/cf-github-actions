@@ -59,9 +59,22 @@ jobs:
 
   deploy:
     # Métodos para ejecutar según lo sucedido en el job dependiente
-    if: ${{ always() }}
+    # if: ${{ always() }}
     runs-on: ubuntu-latest
     needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment-pages.outputs.page_url }}
+
     steps:
       - name: Ejecutar deploy
         run: echo "Deplo..."
+
+      - name: Desplegar sitio web
+        id: deployment-pages
+        ruses: actions/deploy-pages@v4
